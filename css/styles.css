@@ -475,7 +475,8 @@ footer {
   transition: all 3s ease-in; }
   @media all and (max-width: 400px) {
     #loader {
-      font-size: 1vh; } }
+      font-size: 1vh;
+      border: 10px solid red; } }
 
 .loader-copy {
   display: flex;

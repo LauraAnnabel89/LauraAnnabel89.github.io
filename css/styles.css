@@ -83,7 +83,6 @@ footer {
   font-size: 60px;
   text-transform: upercase;
   position: relative;
-  width: auto;
   overflow: hidden; }
 
 .glitch::before,
@@ -100,7 +99,11 @@ footer {
   left: 2px;
   text-shadow: -2px 0 grey;
   clip: rect(24px, 550px, 90px, 0);
-  animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  animation-play-state: paused; }
+
+.glitch::before:hover, .glitch::after:active {
+  animation-play-state: paused; }
 
 .glitch::after {
   left: -2px;
@@ -347,59 +350,59 @@ footer {
   background-size: cover;
   border-radius: 25%; }
 
-.glitter-animate__movement--one {
+.start-animation .glitter-animate__movement--one {
   left: 33%;
   animation: movement 4s ease-in infinite; }
 
-.glitter-animate__movement--two {
+.start-animation .glitter-animate__movement--two {
   left: 42%;
   animation: movement 3.75s ease-in infinite; }
 
-.glitter-animate__movement--three {
+.start-animation .glitter-animate__movement--three {
   left: 34%;
   animation: movement 3.5s ease-in infinite; }
 
-.glitter-animate__movement--four {
+.start-animation .glitter-animate__movement--four {
   left: 41%;
   animation: movement 3.25s ease-in infinite; }
 
-.glitter-animate__movement--five {
+.start-animation .glitter-animate__movement--five {
   left: 35%;
   animation: movement 3s ease-in infinite; }
 
-.glitter-animate__movement--six {
+.start-animation .glitter-animate__movement--six {
   left: 40%;
   animation: movement 2.75s ease-in infinite; }
 
-.glitter-animate__movement--seven {
+.start-animation.glitter-animate__movement--seven {
   left: 36%;
   animation: movement 2.5s ease-in infinite; }
 
-.glitter-animate__movement--eight {
+.start-animation .glitter-animate__movement--eight {
   left: 39%;
   animation: movement 2.25s ease-in infinite; }
 
-.glitter-animate__movement--nine {
+.start-animation .glitter-animate__movement--nine {
   left: 37%;
   animation: movement 2s ease-in infinite; }
 
-.glitter-animate__movement--ten {
+.start-animation .glitter-animate__movement--ten {
   left: 33.5%;
   animation: movement 1.75s ease-in infinite; }
 
-.glitter-animate__movement--eleven {
+.start-animation .glitter-animate__movement--eleven {
   left: 40.5%;
   animation: movement 1.5s ease-in infinite; }
 
-.glitter-animate__movement--twelve {
+.start-animation .glitter-animate__movement--twelve {
   left: 39.5%;
   animation: movement 1.25s ease-in infinite; }
 
-.glitter-animate__movement--thirteen {
+.start-animation .glitter-animate__movement--thirteen {
   left: 43.5%;
   animation: movement 1s ease-in infinite; }
 
-.glitter-animate__movement--fourteen {
+.start-animation .glitter-animate__movement--fourteen {
   left: 40.5%;
   animation: movement 0.75s ease-in infinite; }
 
@@ -429,16 +432,98 @@ footer {
   overflow: hidden;
   background: linear-gradient(-45deg, #f1e2e1, #f2c6cc, #f7a6b3, #e96376);
   animation: movingGradient 5s ease infinite;
+  background-size: 400% 400%;
+  transition: all 1s ease; }
+
+.bubbles-container:hover, .bubbles-container:active {
+  background: linear-gradient(-45deg, darkblue, navy, darkgrey);
+  animation: movingGradient 5s ease infinite;
   background-size: 400% 400%; }
 
-.bubble {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
+@keyframes movingGradient {
+  0% {
+    background-position: 0 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0 50%; } }
+
+.animate-container {
   position: absolute;
-  bottom: -100px;
+  height: 90px;
+  width: 130px;
+  background: transparent;
+  display: flex; }
+
+.animate-container-one {
+  top: 10%;
+  animation: cloudy 150s ease infinite; }
+
+.animate-container-two {
+  top: 50%;
+  animation: cloudyTwo 100s ease infinite; }
+
+@keyframes cloudy {
+  0% {
+    transform: translate(0%); }
+  50% {
+    transform: translate(100%); }
+  100% {
+    transform: translate(0%); } }
+
+@keyframes cloudyTwo {
+  0% {
+    transform: translate(100%); }
+  50% {
+    transform: translate(0%); }
+  100% {
+    transform: translate(100%); } }
+
+.cloud-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  display: flex; }
+
+.cloud-circle {
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.8); }
+  background: white;
+  position: absolute;
+  flex-shrink: 2; }
+
+.one {
+  top: 20%;
+  left: 10%; }
+
+.two {
+  top: 25%;
+  right: 0; }
+
+.three {
+  bottom: 0;
+  left: 0; }
+
+.four {
+  bottom: 0;
+  right: 0; }
+
+.five {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.six {
+  top: 10%;
+  left: 60%;
+  transform: translateX(-50%); }
+
+.seven {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); }
 
 @keyframes movingGradient {
   0% {
@@ -452,7 +537,13 @@ footer {
   background-image: url("../images/neon.jpg"); }
 
 .live-colourfully {
-  background-image: url("../images/live-colourfully.jpg"); }
+  background-image: url("../images/live-colourfully.jpg");
+  filter: grayscale(100%);
+  transition: all 2s ease; }
+
+.live-colourfully:hover,
+.live-colourfully:active {
+  filter: grayscale(0%); }
 
 /* Center the loader */
 #loader {
@@ -532,7 +623,7 @@ footer {
     bottom: -100px;
     opacity: 0; }
   to {
-    bottom: 0;
+    bottom: -20px;
     opacity: 1; } }
 
 #main-page {
